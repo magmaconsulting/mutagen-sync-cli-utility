@@ -1,0 +1,14 @@
+{
+    "name": "magma/mutagen-sync-cli-utility",
+    "description": "Mutagen Sync sessions cli utility",
+    "type": "project",
+    "authors": [
+        {
+            "name": "fabrizio",
+            "email": "fv@magma.consulting"
+        }
+    ],
+    "require": {
+        "symfony/console": "^6.0"
+    }
+}
