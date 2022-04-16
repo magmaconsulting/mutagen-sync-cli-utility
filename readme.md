@@ -4,7 +4,7 @@ This php utility helps to manage Mutagen Sync sessions and allows to run some co
 
 ## Install phar command
 
-Download bin/msu.pahr and save into ~/bin/msu or a directory in your execution path.
+Download [bin/msu.pahr](https://github.com/magmaconsulting/mutagen-sync-cli-utility/raw/main/bin/msu) and save into ~/bin/msu or in a directory in your execution path.
 
 ## Usage examples
 
