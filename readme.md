@@ -33,14 +33,21 @@ Pause all sessions containing "tos":
 ```shell
 msu tos --pause
 ```
-
 ![](doc/msu-tos-pause.png)
+
+Pause all sessions without asking:
+
+```shell
+msu --pause -n 
+```
 
 Resume session "tos-co1d":
 
 ```shell
 msu tos-co1d --resume
 ```
+
+
 
 Show help:
 
