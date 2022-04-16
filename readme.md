@@ -1,6 +1,6 @@
 # Mutagen Sync sessions cli utility
 
-This php utility helps tp manage Mutagen Sync sessions and allow to run some commands on multiple sessions.
+This php utility helps to manage Mutagen Sync sessions and allows to run some commands on multiple sessions.
 
 ## Install phar command
 
