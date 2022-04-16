@@ -21,12 +21,15 @@ msu tos
 ```
 ![](doc/msu-tos.png)
 
+Pause all sessions containing "tos":
 
 ```shell
 msu tos --pause
 ```
 
 ![](doc/msu-tos-pause.png)
+
+Resume session "tos-co1d":
 
 ```shell
 msu tos-co1d --resume
