@@ -94,7 +94,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
         $table->render();
 
 
-        foreach(['pause','resume','reset'] as $mscmd) {
+        foreach(['pause','resume','reset','flush'] as $mscmd) {
             if ($input->getOption($mscmd)){
                 $n=count($sessions);
                 if (!$input->getOption('no-interaction')) {
