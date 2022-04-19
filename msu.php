@@ -29,8 +29,9 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
         // if cmd selfupdate and it's phar, proceed
         if ($input->getOption("selfupdate") && strlen(Phar::running()) > 0) {
             $self=Phar::running(false);
+            $output->writeln("Updating file: $self");
             $new=$self.'.tmp';
-            if(@copy("https://github.com/magmaconsulting/mutagen-sync-cli-utility/raw/main/bin/msu",$new)) {
+            if(copy("https://github.com/magmaconsulting/mutagen-sync-cli-utility/raw/main/bin/msu",$new)) {
                 if (md5_file($new) == md5_file($self)) {
                     @unlink($new);
                     $output->writeln("Command not updated: the current version is already the newest");
