@@ -12,7 +12,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 (new SingleCommandApplication())
     ->setName('Mutagen sync sessions utility') // Optional
-    ->setVersion('1.0.0') // Optional
+    ->setVersion('1.1.0') // Optional
     ->addArgument('sess', InputArgument::OPTIONAL, 'session search string')
 
     ->addOption('inactive', 'i', InputOption::VALUE_NONE,"show only inactive sessions")
