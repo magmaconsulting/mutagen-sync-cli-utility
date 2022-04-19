@@ -17,14 +17,32 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
     ->addOption('inactive', 'i', InputOption::VALUE_NONE,"show only inactive sessions")
     ->addOption('active', 'a', InputOption::VALUE_NONE,"show only active sessions")
-
+    ->addOption('selfupdate', null, InputOption::VALUE_NONE,"self update the phar file")
     ->addOption('pause', null, InputOption::VALUE_NONE,"pause sessions")
     ->addOption('resume', null, InputOption::VALUE_NONE,"resume sessions")
     ->addOption('reset', null, InputOption::VALUE_NONE,"reset sessions")
     ->addOption('flush', null, InputOption::VALUE_NONE,"flush sessions")
 
     ->setCode(function (InputInterface $input, OutputInterface $output) {
-        // output arguments and options
+
+        // simple self update
+        // if cmd selfupdate and it's phar, proceed
+        if ($input->getOption("selfupdate") && strlen(Phar::running()) > 0) {
+            $self=Phar::running(false);
+            $new=$self.'.tmp';
+            if(@copy("https://github.com/magmaconsulting/mutagen-sync-cli-utility/raw/main/bin/msu",$new)) {
+                if (md5_file($new) == md5_file($self)) {
+                    @unlink($new);
+                    $output->writeln("Command not updated: the current version is already the newest");
+                } else {
+                    @rename($new,$self);
+                    $output->writeln("Command updated");
+                }
+            } else {
+                $output->writeln("<error>Error downloading the new command</error>");
+            }
+            return;
+        }
 
         $testCommand = strpos(PHP_OS, 'WIN') === 0 ? 'where' : 'command -v';
         if (!is_executable(trim((string)shell_exec("$testCommand mutagen    ")))) {
