@@ -52,6 +52,6 @@ msu tos-co1d --resume
 Show help:
 
 ```shell
-msu help
+msu --help
 ```
 
