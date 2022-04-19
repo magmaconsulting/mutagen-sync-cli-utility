@@ -25,6 +25,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
     ->setCode(function (InputInterface $input, OutputInterface $output) {
 
+
         // simple self update
         // if cmd selfupdate and it's phar, proceed
         if ($input->getOption("selfupdate") && strlen(Phar::running()) > 0) {
@@ -37,6 +38,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
                     $output->writeln("Command not updated: the current version is already the newest");
                 } else {
                     @rename($new,$self);
+                    @chmod($self,0755);
                     $output->writeln("Command updated");
                 }
             } else {
