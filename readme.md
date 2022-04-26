@@ -21,6 +21,12 @@ List all sessions:
 msu  
 ```
 
+List all active sessions:
+```shell
+msu -a
+```
+![](doc/msu-a.png)
+
 List all sessions containing "tos":
 
 ```shell
