@@ -64,7 +64,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
         $s=0;
         $sessions=[];
 
-        $runningStatuses=["Watching for changes","Scanning files","Connecting to","Staging files"];
+        $runningStatuses=["Watching for changes","Scanning files","Connecting to","Staging files","Reconciling changes"];
 
         foreach ($out as $o) {
             if (str_contains($o,"Name")) {
