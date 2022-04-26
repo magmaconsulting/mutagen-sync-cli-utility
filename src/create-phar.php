@@ -2,8 +2,8 @@
 
 try
 {
-    $pharFile = 'bin/msu.phar';
-    $finalFile = 'bin/msu';
+    $pharFile = '../bin/msu.phar';
+    $finalFile = '../bin/msu';
     $mainFile='msu.php';
     $buildFromDir='/.';
 
@@ -12,7 +12,10 @@ try
     {
         unlink($pharFile);
     }
-
+    if (file_exists($finalFile))
+    {
+        unlink($finalFile);
+    }
     if (file_exists($pharFile . '.gz'))
     {
         unlink($pharFile . '.gz');

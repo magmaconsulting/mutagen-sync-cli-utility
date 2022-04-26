@@ -106,14 +106,13 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
         $output->writeln("Mutagen sync list");
         $table = new Table($output);
-        $table->setHeaders(['num', 'Name', 'Active','Status']);
+        $table->setHeaders([ 'Name', 'Active','Status']);
         $i=0;
         $show='enbaled';
         foreach($sessions as $session) {
-            $table->setRow($i++,[$i,$session['name'],($session['active']?"<info>active</info>":"inactive"),$session['status']]);
+            $table->setRow($i++,[$session['name'],($session['active']?"<info>active</info>":"inactive"),$session['status']]);
         }
         $table->render();
-
 
         foreach(['pause','resume','reset','flush'] as $mscmd) {
             if ($input->getOption($mscmd)){

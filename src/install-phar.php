@@ -1,7 +1,7 @@
 <?php
 try
 {
-    $pharFile = 'bin/msu';
+    $pharFile = '../bin/msu';
     $destFile=$_SERVER['HOME'].'/bin/msu';
 
     // clean up
@@ -13,7 +13,7 @@ try
        throw new Exception("$pharFile not copied".PHP_EOL);
     }
     if (!chmod($destFile, 0770)) {
-        echo("warning: could not ste execution permission to '$destFile' ".PHP_EOL);
+        echo("warning: could not set execution permission to '$destFile' ".PHP_EOL);
     }
 
     echo "$pharFile installed to '$destFile'".PHP_EOL;
