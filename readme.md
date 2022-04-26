@@ -9,7 +9,7 @@ Download file pahr [bin/msu](https://github.com/magmaconsulting/mutagen-sync-cli
 On linux/macos:
 
 ```
-curl https://github.com/magmaconsulting/mutagen-sync-cli-utility/raw/main/bin/msu -o ~/bin/msu 
+wget "https://raw.github.com/magmaconsulting/mutagen-sync-cli-utility/main/bin/msu" -O ~/bin/msu
 chmod +x ~/bin/msu 
 ```
 
