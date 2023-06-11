@@ -12,7 +12,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 (new SingleCommandApplication())
     ->setName('Mutagen sync sessions utility') // Optional
-    ->setVersion('1.1.1') // Optional
+    ->setVersion('1.1.2') // Optional
     ->addArgument('sess', InputArgument::OPTIONAL, 'session search string')
 
     ->addOption('inactive', 'i', InputOption::VALUE_NONE,"show only inactive sessions")
@@ -124,7 +124,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
                     }
                     $output->writeln("WARNING: you are about to $mscmd $n sessions.");
                     $question = new ConfirmationQuestion('Are you sure you want to continue? [No] ', false);
-                    $this->questionHelper = $this->getHelper('question');
+                    @$this->questionHelper = $this->getHelper('question');
                     if (!$this->questionHelper->ask($input, $output, $question)) {
                         return;
                     }
