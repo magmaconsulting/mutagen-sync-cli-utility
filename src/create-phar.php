@@ -52,7 +52,7 @@ try
     chmod(__DIR__ . '/'.$pharFile, 0770);
     rename($pharFile, $finalFile);
 
-    echo "$pharFile successfully created" . PHP_EOL;
+    echo "$finalFile successfully created" . PHP_EOL;
 }
 catch (Exception $e)
 {
