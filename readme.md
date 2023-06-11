@@ -2,7 +2,7 @@
 
 This php utility helps to manage Mutagen Sync sessions and allows to run some commands on multiple sessions.
 
-## Install phar command
+## Install phar command 
 
 Download file pahr [bin/msu](https://github.com/magmaconsulting/mutagen-sync-cli-utility/raw/main/bin/msu) and save into ~/bin/msu or in a directory in your execution path.
 
@@ -54,10 +54,29 @@ msu tos-co1d --resume
 ```
 
 
-
 Show help:
 
 ```shell
 msu --help
 ```
 
+## Generate a new phar
+
+Create new phar:
+
+```
+cd src/
+php -d phar.readonly=0 create-phar.php
+```
+
+Check: 
+
+```
+../bin/msu --help
+```
+
+Install to your $HOME/bin: 
+
+```
+php install.phar.php
+```

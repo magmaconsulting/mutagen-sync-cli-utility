@@ -1,4 +1,7 @@
 <?php
+/*
+ *  Usage: php -d phar.readonly=0 create-phar.php
+ */
 
 try
 {
