@@ -33,7 +33,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
             $output->writeln("Updating file: $self");
             $new=$self.'.tmp';
             if(copy("https://github.com/magmaconsulting/mutagen-sync-cli-utility/raw/main/bin/msu",$new)) {
-                if (md5_file($new) == md5_file($self)) {
+                if (md5_file($new) === md5_file($self)) {
                     @unlink($new);
                     $output->writeln("Command not updated: the current version is already the newest");
                 } else {
@@ -66,9 +66,12 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
         $runningStatuses=["Watching for changes","Scanning files","Connecting to","Staging files","Reconciling changes","Applying changes"];
 
+        // parse command output
         foreach ($out as $o) {
-            if (str_contains($o,"Name")) {
+            if (str_starts_with($o,"-----")) {
                 $s++;
+            }
+            if (str_contains($o,"Name")) {
                 $name=trim(ltrim($o,"Name:"));
                 $sessions[$s]["name"]=$name;
             }
@@ -85,8 +88,18 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
                 }
             }
         }
+
+        // remove sessions without Name
+        $sessions=array_filter($sessions,function  ($session) {
+            return (empty($session['name']) ? false : true);
+        });
+
+        //print_r($sessions);exit;
+
+        // sort sessions by name
         usort($sessions,function($a,$b){return strcmp($a["name"], $b["name"]);});
 
+        // filter sessions by argument "sess" and options "active/inactive"
         $sessions=array_filter($sessions,function  ($session) use ($input){
             $sess=$input->getArgument("sess");
             if (!empty($sess) && !str_contains($session['name'],$sess)) {
